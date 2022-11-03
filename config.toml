@@ -1,0 +1,44 @@
+baseURL = 'https://kumakt.memo.github.io/blog-hugo/'
+publishDir = "docs"
+languageCode = 'ja-ja'
+title = 'My Memo Site'
+theme = "beautifulhugo"
+googleAnalytics = "UA-1234567890"
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+hasCJKLanguage = true
+
+[params]
+author = "Kumakt"
+description = ""
+url = "https://kumakt.memo.github.io/"
+mainSections = ["post","posts"]
+rss = true
+wordCount = true
+lastmod = true
+location = "Japan"
+
+[[params.links]]
+title = "Link"
+href = "https://kumakt.memo.github.io/"
+
+[[menu.main]]
+    name = "Memo"
+    url = ""
+    weight = 1
+
+[[menu.main]]
+    name = "About"
+    url = "page/about/"
+    weight = 2
+
+[[menu.main]]
+    name = "Tags"
+    url = "tags"
+    weight = 3
+
+[Author]
+github = "username"   
+
+[frontmatter]
+latsmod = ["lastmod", ":fileModTime", ":default"]

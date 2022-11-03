@@ -1,0 +1,51 @@
+---
+title: "ITS_poisson"
+author: "Kumakt"
+format: html
+editor: visual
+execute: 
+  warning: false
+---
+
+## 背景
+
+実はBernalのチュートリアル論文には間違いがある。
+
+poissonモデルを用いる際には注意が必要
+
+以下で示す。
+
+Interrupted time series regression for the evaluation of public health interventions: a tutorial
+
+https://doi.org/10.1093/ije/dyw098
+
+## データの準備
+
+まずは下準備としてデータ作成をする
+
+```{r message=FALSE}
+library(knitr)
+library(DT)
+library(tidyverse)
+library(tsModel)
+```
+
+```{r}
+weekid <- c(6:53)
+n_Dexamethasone <- c(0,0,0,0,0,0,0,0,0,1,1,2,2,1,1,2,0,0,0,0,2,2,4,10,22,60,127,207,223,186,161,121,
+                     83,65,	93,	112,115,120,126,153,187,259,352,375,392,347,252,67)
+n_total <- c(6,7,29,34,57,74,91,99,149,334,463,485,465,396,307,219,166,121,100,83,89,112,
+             148,217,285,452, 621,696,729,716,606,488,403,341,373,417,417,438,464,502,652,914,1041,1105,
+             1112,1059,782,314)
+after_pub <- rep(c(0,1),c(23,25))
+after_pub_weekid <- c(rep(0,23),1:25)
+
+dat1_dex <- as.data.frame(cbind(weekid,after_pub,after_pub_weekid,n_Dexamethasone,n_total))
+
+datatable(dat1_dex)
+```
+
+## Modelの作成
+
+offset項を用いる。
+

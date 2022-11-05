@@ -1,4 +1,4 @@
-baseURL = 'https://kumakt.memo.github.io/blog-hugo/'
+baseURL = "https://beautiful-kumaktmemo.netlify.app/"
 publishDir = "docs"
 languageCode = 'ja-ja'
 title = 'My Memo Site'
